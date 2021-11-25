@@ -1,3 +1,5 @@
+# Projekt LAB 2 lista, stos, kolejka
+
 from typing import Any
 
 class Node:
