@@ -12,7 +12,7 @@ class LinkedList:
 
     def push(self, value: Any) -> None:
         if self.head is None:
-            newNode = Node(value)  # jak nie ma zadnego wiezla, to nowy bedzie zarowno head jak i tail
+            newNode = Node(value)  
             self.head = newNode
             self.tail = newNode
         else:
@@ -20,28 +20,28 @@ class LinkedList:
             newNode.next = self.head
             self.head = newNode
 
-    def append(self, value: Any) -> None:  # nowy wezel na koniec
+    def append(self, value: Any) -> None: 
         if self.head is None:
-            newNode = Node(value)  # jak nie ma zadnego wiezla, to nowy bedzie zarowno head jak i tail
+            newNode = Node(value)  
             self.head = newNode
             self.tail = newNode
-        # mozna tez dac self.push(value), gdzie wstawi po prostu jednoczesnie na pierwsze i ostatnie miejsce
+        # mozna tez dac self.push(value)
         else:
             node = self.tail
             newNode = Node(value)
-            node.next = newNode  #ostatni wskazuje na nowy node
-            self.tail = newNode # i ten nowy node staje sie ostatnim
+            node.next = newNode  
+            self.tail = newNode 
 
-    def node(self, at: int) -> Node: # zwroci wezel na wskazanje pozycji
+    def node(self, at: int) -> Node:
         if at < len(self):
             node = self.head
             for i in range(at):
                 node = node.next
             return node
         else:
-            raise ValueError("There was given an index out of the list.") # raise nazwa_bledu, ktora sama wymyslami w nawiasie o co chodzi. Program by sie zatrzymal, a pryz zwyklym stirngu lecial by dalej
+            raise ValueError("There was given an index out of the list.")
 
-    def insert(self, value: Any, after: Node) -> None: # wstawi nowy węzeł tuż za węzłem wskazanym w parametrze
+    def insert(self, value: Any, after: Node) -> None: 
         if after is None:
             print("Given node doesn't exist")
             return
@@ -49,10 +49,10 @@ class LinkedList:
             self.append(value)
             return
         newNode = Node(value)
-        newNode.next = after.next  # to co ma byc nastepone po wezle co go dodaje to to, co jest aktualnie nastepne po wezle after
+        newNode.next = after.next
         after.next = newNode
 
-    def pop(self) -> Any:  # usunie pierwszy element z listy i go zwróci
+    def pop(self) -> Any: 
         if len(self) == 0:
             raise ValueError("The list is empty.")
         else:
@@ -60,7 +60,7 @@ class LinkedList:
             self.head = self.head.next
             return firstNode.value
 
-    def remove_last(self) -> Any:  #  usunie ostatni element z listy i go zwróci
+    def remove_last(self) -> Any:
         if self.head is None:
             print("The list is empty")
             return Node(None)
@@ -79,7 +79,7 @@ class LinkedList:
             return deletedNode
 
 
-    def remove(self, after: Node) -> Any:  #usunie z listy następnik węzła przekazanego w parametrze
+    def remove(self, after: Node) -> Any:
         if self.head is self.tail or after is self.tail:
             print("There is nothing after" + str(after.value))
             return Node(None)
@@ -91,7 +91,7 @@ class LinkedList:
             after.next = deletedNode.next
             return deletedNode
 
-    def __str__(self) -> str:   # pozwala czytac z printa , metoda magiczna- nazwa __str__ a wywoluje print()
+    def __str__(self) -> str: 
         if self.head is None:
             return "The list is empty"
         node = self.head
@@ -114,22 +114,22 @@ list_ = LinkedList()
 
 list_.push(1)
 list_.push(0)
-print(f'The list after usage of the  method .push():  {list_}')  # jest 0 -> 1
+print(f'The list after usage of the  method .push():  {list_}') 
 
 list_.append(9)
 list_.append(10)
-print(f'The list after usage of the method .append():  {list_}') # 0 -> 1 -> 9 -> 10
+print(f'The list after usage of the method .append():  {list_}')
 
-print(f'Node behind index 2 is: {list_.node(2).value}')   # 9, bo 9 jest trzeicm elementem, a indkesy 0,1,2 (dwojka jest trzecia)
+print(f'Node behind index 2 is: {list_.node(2).value}')  
 
-list_.insert(12, list_.node(3))  # 12 to wartosc, jaka chce dodac, a 3 to indeks po ktorym dodaje jest 0,1,9,10,12
-list_.insert(15, list_.node(2)) # 0 -> 1 -> 9 -> 15 -> 10 -> 12
+list_.insert(12, list_.node(3))  
+list_.insert(15, list_.node(2))
 print(f'The list after usage of the method .node():  {list_}')
 
-print(f'Deleted element by method pop() is: {list_.pop()}')  # 0 usunie
-print(f'The list after usage of the method .pop():  {list_}') # bedzie 1 -> 9 -> 15 -> 10 -> 12
-print(f'Deleted element by method .remove_lat() is: {list_.remove_last()}') # 12 usunie
-print(f'The list after usage of the method .remove_last():  {list_}')  # 1 -> 9 -> 15 -> 10
+print(f'Deleted element by method pop() is: {list_.pop()}') 
+print(f'The list after usage of the method .pop():  {list_}') 
+print(f'Deleted element by method .remove_lat() is: {list_.remove_last()}') 
+print(f'The list after usage of the method .remove_last():  {list_}')
 print(f'The amount of list\'s elements is: {len(list_)}')
 print(f'Deleted element after indicated position  is: {list_.remove(list_.node(1)).value}')
 print(f'The list after usage of the method .remove():  {list_}')
@@ -139,7 +139,7 @@ class Stack:
     def __init__(self):
        self._storage = LinkedList()
 
-    def push(self, element: Any) -> None: #umieści nową wartość "na szczycie" stosu, czyli zostanie dodana na końcu wewnętrznej listy
+    def push(self, element: Any) -> None: 
         self._storage.push(element)
 
     def pop(self) -> Any:
