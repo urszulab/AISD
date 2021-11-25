@@ -4,7 +4,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-
+        
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -78,7 +78,6 @@ class LinkedList:
             node.next = None
             return deletedNode
 
-
     def remove(self, after: Node) -> Any:
         if self.head is self.tail or after is self.tail:
             print("There is nothing after" + str(after.value))
@@ -111,7 +110,6 @@ class LinkedList:
         return amount
 
 list_ = LinkedList()
-
 list_.push(1)
 list_.push(0)
 print(f'The list after usage of the  method .push():  {list_}') 
@@ -128,12 +126,14 @@ print(f'The list after usage of the method .node():  {list_}')
 
 print(f'Deleted element by method pop() is: {list_.pop()}') 
 print(f'The list after usage of the method .pop():  {list_}') 
+
 print(f'Deleted element by method .remove_lat() is: {list_.remove_last()}') 
 print(f'The list after usage of the method .remove_last():  {list_}')
+
 print(f'The amount of list\'s elements is: {len(list_)}')
+
 print(f'Deleted element after indicated position  is: {list_.remove(list_.node(1)).value}')
 print(f'The list after usage of the method .remove():  {list_}')
-
 
 class Stack:
     def __init__(self):
@@ -167,6 +167,7 @@ print(stack)
 top_value = stack.pop()
 print(f'Deleted value is: {top_value}')
 print(stack)
+
 print(f'Current amount of stack\'s elements : {len(stack)}')
 
 class Queue:
