@@ -1,6 +1,5 @@
 from typing import Any
 
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -40,7 +39,8 @@ class LinkedList:
                 node = node.next
             return node
         else:
-            raise ValueError("There was given an index out of the list.")
+            print("There was given an index out of the list.")
+            return
 
     def insert(self, value: Any, after: Node) -> None:
         if after is None:
@@ -55,7 +55,8 @@ class LinkedList:
 
     def pop(self) -> Any:
         if len(self) == 0:
-            raise ValueError("The list is empty.")
+            print("The list is empty.")
+            return
         else:
             firstNode = self.head
             self.head = self.head.next
@@ -137,7 +138,6 @@ print(f'The amount of list\'s elements is: {len(list_)}')
 print(f'Deleted element after indicated position  is: {list_.remove(list_.node(1)).value}')
 print(f'The list after usage of the method .remove():  {list_}')
 
-
 class Stack:
     def __init__(self):
         self._storage = LinkedList()
@@ -148,6 +148,7 @@ class Stack:
     def pop(self) -> Any:
         if len(self._storage) == 0:
             print("Stack is empty")
+            return
         else:
             return self._storage.pop()
 
@@ -159,7 +160,6 @@ class Stack:
 
     def __len__(self) -> int:
         return len(self._storage)
-
 
 stack = Stack()
 stack.push(21)
@@ -181,6 +181,7 @@ class Queue:
     def peek(self) -> Any:
         if len(self._storage) == 0:
             print("The queue is empty")
+            return
         else:
             return self._storage.tail.value
 
@@ -190,6 +191,7 @@ class Queue:
     def dequeue(self) -> Any:
         if len(self._storage) == 0:
             print("The queue is empty")
+            return
         else:
             return self._storage.remove_last().value
 
@@ -207,10 +209,6 @@ queue.enqueue('Odpowiedz A')
 queue.enqueue('Odpowiedz B')
 queue.enqueue('Odpowiedz C')
 print(queue)
-
-queue.dequeue()
-print(queue)
-print(f'The amount of queue\'s elements is: {len(queue)}')
 
 queue.dequeue()
 print(queue)
