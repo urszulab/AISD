@@ -20,7 +20,7 @@ class BinarySearchTree:
     def _insert(self, node: BinaryNode, val: Any) -> BinaryNode: # tu nie ma przypadku, gdzie if node is NOne, bo na nodzie te metode wywoluje, wiec muso byc node wczesniej
         if node.value > val:
             node.left_child = BinarySearchTree._insert(node.left_child, val)
-        if node.value <= val:
+        if node.value < val or node.value == val:
             node.right_child = BinarySearchTree._insert(node.right_child, val)
         return node
 
